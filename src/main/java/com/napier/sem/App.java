@@ -121,12 +121,12 @@ public class App {
     public void printPopulation(ArrayList<country> countries)
     {
         // Print top border
-        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
+        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--------------");
 
         // Print header
-        System.out.println(String.format("%-5s %-41s %-20s %-30s %-20s %-18s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.println(String.format("| %-5s | %-41s | %-20s | %-30s | %-20s | %-18s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
         // Print header-bottom border
-        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
+        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--------------");
 
         // Loop over all employees in the list
         for (country count : countries)
@@ -136,12 +136,12 @@ public class App {
             String formattedPopulation = numformat.format(count.getPopulation());
 
             String count_string =
-                    String.format("%-5s %-41s %-20s %-30s %-20s %-18s",
+                    String.format("| %-5s | %-41s | %-20s | %-30s | %-20s | %-18s",
                             count.getCountry_code(), count.getCountry_name(), count.getContinent(), count.getRegion(), formattedPopulation, count.getCity_name());
             System.out.println(count_string);
         }
         // Print bottom border
-        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
+        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--------------");
 
     }
 
