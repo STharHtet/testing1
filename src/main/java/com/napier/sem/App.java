@@ -65,9 +65,11 @@ public class App {
 
         // Extract country information
         ArrayList<country> countries = a.getCountry();
+        ArrayList<country> region = a.region_data("caribbean");
 
         //Printing Population Countries Ascending
         a.printPopulation(countries);
+        a.printRegion(region);
 
         // Disconnect from database
         a.disconnect();
@@ -116,10 +118,12 @@ public class App {
 
     /**
      * Prints a list of employees.
-     * @param countries The list of employees to print.
+     * @param countries The list of countries to print.
      */
     public void printPopulation(ArrayList<country> countries)
     {
+        // What the feature is
+        System.out.println("Feature 1");
         // Print top border
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
@@ -130,6 +134,80 @@ public class App {
 
         // Loop over all employees in the list
         for (country count : countries)
+        {
+            // Format population with commas and three decimal places
+            DecimalFormat numformat = new DecimalFormat("#,###,###");
+            String formattedPopulation = numformat.format(count.getPopulation());
+
+            String count_string =
+                    String.format("| %-5s | %-50s | %-20s | %-30s | %-20s | %-35s |",
+                            count.getCountry_code(), count.getCountry_name(), count.getContinent(), count.getRegion(), formattedPopulation, count.getCity_name());
+            System.out.println(count_string);
+        }
+        // Print bottom border
+        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
+
+    }
+
+    /**
+     * The following code is method for the region
+     */
+    public ArrayList<country> region_data(String regionn)
+    {
+        try
+        {
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            + "FROM country, city "
+                            + "WHERE country.Capital = city.ID AND country.Region = ? "
+                            + "ORDER BY Region ASC ,Population DESC LIMIT 10";
+
+            // Create an SQL statement
+            PreparedStatement stmt = con.prepareStatement(strSelect);
+            stmt.setString(1,regionn);
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery();
+            // Extract employee information
+            ArrayList<country> countries = new ArrayList<country>();
+            while (rset.next())
+            {
+                country cou = new country();
+                cou.setCountry_code(rset.getString("country.Code"));
+                cou.setCountry_name(rset.getString("country.Name"));
+                cou.setContinent(rset.getString("country.Continent"));
+                cou.setRegion(rset.getString("country.Region"));
+                cou.setPopulation(rset.getInt("country.Population"));
+                cou.setCity_name(rset.getString("city.Name"));
+                countries.add(cou);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get population details");
+            return null;
+        }
+    }
+
+    /**
+     * The following code is the print the region
+     */
+    public void printRegion(ArrayList<country> region)
+    {
+        // What the feature is
+        System.out.println("Feature 2");
+        // Print top border
+        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
+
+        // Print header
+        System.out.println(String.format("| %-5s | %-50s | %-20s | %-30s | %-20s | %-35s |", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        // Print header-bottom border
+        System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
+
+        // Loop over all employees in the list
+        for (country count : region)
         {
             // Format population with commas and three decimal places
             DecimalFormat numformat = new DecimalFormat("#,###,###");
