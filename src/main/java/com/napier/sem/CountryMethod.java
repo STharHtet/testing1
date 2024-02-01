@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class CountryMethod {
+public class CountryMethod { // Test
     public ArrayList<country> getCountriesByContinent(Connection con, String inContinent)
     {
         try
