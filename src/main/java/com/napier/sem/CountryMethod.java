@@ -8,22 +8,20 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CountryMethod {
-    public ArrayList<country> getCountriesByContinent(Connection con, String inContinent)
+    public ArrayList<country> getCountry(Connection con)
     {
         try
         {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
                             + "FROM country, city "
-                            + "WHERE country.Capital = city.ID AND country.Continent = ?"
+                            + "WHERE country.Capital = city.ID "
                             + "ORDER BY country.Population DESC ";
-            // Create an SQL statement
-            PreparedStatement stmt = con.prepareStatement(strSelect);
-            stmt.setString(1,inContinent);
-
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery();
+            ResultSet rset = stmt.executeQuery(strSelect);
             // Extract employee information
             ArrayList<country> countries = new ArrayList<country>();
             while (rset.next())
