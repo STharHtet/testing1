@@ -64,17 +64,17 @@ public class App {
         a.connect();
 
         // Create a new country in the word object
-        Country_world cw = new Country_world();
+        CountryMethod cw = new CountryMethod();
+        CountryOutput coutput = new CountryOutput();
 
         // Array Countries, Region, Continents with the population largest to smallest
         // Extract country in the world from a class
         ArrayList<country> countries = cw.getCountry(a.con);
-        ArrayList<country> continents = cw.getCountriesByContinent(a.con, "Asia");
-        ArrayList<country> region = cw.region_data(a.con,"caribbean");
+
 
         // Printing data
-        cw.printPopulation(countries);
-
+        System.out.println("For World");
+        coutput.printPopulation(countries);
 
         // Disconnect from database
         a.disconnect();
