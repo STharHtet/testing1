@@ -74,8 +74,7 @@ public class App {
 
         // Printing data
         cw.printPopulation(countries);
-        cw.printContinentPopulation(continents);
-        cw.printRegion(region);
+
 
         // Disconnect from database
         a.disconnect();
