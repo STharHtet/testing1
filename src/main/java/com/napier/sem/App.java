@@ -73,10 +73,12 @@ public class App {
 
 
         // Printing data
+        System.out.println("For World");
         System.out.println("For World 1");
         System.out.println("For World 2");
 
         coutput.printPopulation(continents);
+        // There has been some changes made here
 
         // Disconnect from database
         a.disconnect();
