@@ -55,6 +55,10 @@ public class App {
         }
     }
 
+    /**
+     * The following method is to call the classes to be run on the main Java class
+     * @param args
+     */
     public static void main(String[] args)
     {
         // Create new Application
@@ -69,12 +73,19 @@ public class App {
 
         // Array Countries, Region, Continents with the population largest to smallest
         // Extract country in the world from a class
-        ArrayList<country> continents = cw.getCountriesByContinent(a.con, "Asia");
+        ArrayList<Country> countries = cw.getCountry(a.con);
+        ArrayList<Country> continents = cw.getCountriesByContinent(a.con, "Asia");
+        ArrayList<Country> region = cw.region_data(a.con,"caribbean");
 
 
         // Printing data
-        System.out.println("For Continent");
+        System.out.println("All the countries in the world organised by largest population to smallest.");
+        coutput.printPopulation(countries);
+        System.out.println("All the countries in a continent organised by largest population to smallest. (Asia)");
         coutput.printPopulation(continents);
+        System.out.println("All the countries in a region organised by largest population to smallest. (Caribbean)");
+        coutput.printPopulation(region);
+
 
         // Disconnect from database
         a.disconnect();

@@ -8,7 +8,7 @@ public class CountryOutput {
      * Prints a list of World sorted by population.
      * @param dataoutput The list of countries to print.
      */
-    public void printPopulation(ArrayList<country> dataoutput)
+    public void printPopulation(ArrayList<Country> dataoutput)
     {
 
         // Print top border
@@ -20,7 +20,7 @@ public class CountryOutput {
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
         // Loop over all employees in the list
-        for (country count : dataoutput)
+        for (Country count : dataoutput)
         {
             // Format population with commas and three decimal places
             DecimalFormat numformat = new DecimalFormat("#,###,###");

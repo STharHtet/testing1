@@ -3,7 +3,7 @@ package com.napier.sem;
 /** testing country
  * to represents country data
  */
-public class country {
+public class Country {
     public String getCity_name() {
         return city_name;
     }
