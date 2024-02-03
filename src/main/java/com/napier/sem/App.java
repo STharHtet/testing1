@@ -71,12 +71,21 @@ public class App {
         CountryMethod cw = new CountryMethod();
         CountryOutput coutput = new CountryOutput();
 
+        // Create a new city in the word object
+        CityMethod city = new CityMethod();
+        CityOutput cityout = new CityOutput();
+
         // Array Countries, Region, Continents with the population largest to smallest
         // Extract country in the world from a class
         ArrayList<Country> countries = cw.getCountry(a.con);
         ArrayList<Country> continents = cw.getCountriesByContinent(a.con, "Asia");
         ArrayList<Country> region = cw.region_data(a.con,"caribbean");
 
+        ArrayList<Country> tenCountries = cw.getTenCountry(a.con);
+        ArrayList<Country> tenContinents = cw.getTenCountriesByContinent(a.con, "Asia");
+        ArrayList<Country> tenRegions = cw.getTenCountriesByRegion(a.con,"Caribbean");
+
+        ArrayList<City> cities = city.getCity(a.con);
 
         // Printing data
         System.out.println("All the countries in the world organised by largest population to smallest.");
@@ -86,6 +95,15 @@ public class App {
         System.out.println("All the countries in a region organised by largest population to smallest. (Caribbean)");
         coutput.printPopulation(region);
 
+        System.out.println("The top 10 populated countries in the world.");
+        coutput.printPopulation(tenCountries);
+        System.out.println("The top 10 populated countries in a continent. (Asia)");
+        coutput.printPopulation(tenContinents);
+        System.out.println("The top 10 populated countries in a region. (Caribbean)");
+        coutput.printPopulation(tenRegions);
+
+        System.out.println("All the cities in the world organised by largest population to smallest.");
+        cityout.printPopulation(cities);
 
         // Disconnect from database
         a.disconnect();
