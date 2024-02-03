@@ -19,16 +19,19 @@ public class CityOutput {
         // Print header-bottom border
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
-        // Loop over all employees in the list
+        // Loop over all cities in the list
         for (City city : dataoutput)
         {
             // Format population with commas and three decimal places
             DecimalFormat numformat = new DecimalFormat("#,###,###");
             String formattedPopulation = numformat.format(city.getCity_population());
 
+            // Add country code in parentheses after the country name
+            String countryString = String.format("%s (%s)", city.getCountry_name(), city.getCountry_code());
+
             String count_string =
                     String.format("| %-50s | %-50s | %-30s | %-35s |",
-                            city.getCity_name(), city.getCountry_code(), city.getCity_district(), formattedPopulation, city.getCity_name());
+                            city.getCity_name(), countryString, city.getCity_district(), formattedPopulation);
             System.out.println(count_string);
         }
         // Print bottom border

@@ -8,6 +8,16 @@ public class City {
 
     private String city_district;
 
+    private String country_name;
+
+    public String getCountry_name() {
+        return country_name;
+    }
+
+    public void setCountry_name(String country_name) {
+        this.country_name = country_name;
+    }
+
     public String getCity_name() {
         return city_name;
     }
