@@ -75,31 +75,51 @@ public class App {
         CityMethod city = new CityMethod();
         CityOutput cityout = new CityOutput();
 
+        // Create a new capital city in the word object
+        CapCityMethod capcity = new CapCityMethod();
+        CapCityOutput capcityout = new CapCityOutput();
+
+        // Input for Continent, Region, Country and District
+        String input_continent = "Asia";
+        String input_region = "Caribbean";
+        String input_country = "Myanmar";
+        String input_district = "Tokyo-to";
+
         // Array Countries, Region, Continents with the population largest to smallest
         // Extract country in the world from a class
         ArrayList<Country> countries = cw.getCountry(a.con);
         ArrayList<Country> continents = cw.getCountriesByContinent(a.con, "Asia");
         ArrayList<Country> region = cw.region_data(a.con,"caribbean");
 
+        // Extract top ten countries
         ArrayList<Country> tenCountries = cw.getTenCountry(a.con);
         ArrayList<Country> tenContinents = cw.getTenCountriesByContinent(a.con, "Asia");
         ArrayList<Country> tenRegions = cw.getTenCountriesByRegion(a.con,"Caribbean");
 
+        // Extract cities
         ArrayList<City> cities = city.getCities(a.con);
-        String city_continent = "Asia";
-        ArrayList<City> citiesContinent = city.getCitiesByContinent(a.con, city_continent);
-        String city_region = "Caribbean";
-        ArrayList<City> citiesRegion = city.getCitiesByRegion(a.con, city_region);
-        String city_country = "Myanmar";
-        ArrayList<City> citiesCountry = city.getCitiesByCountry(a.con, city_country);
-        String city_district = "Tokyo-to";
-        ArrayList<City> citiesDistrict = city.getCitiesByDistrict(a.con, city_district);
+        ArrayList<City> citiesContinent = city.getCitiesByContinent(a.con, input_continent);
+        ArrayList<City> citiesRegion = city.getCitiesByRegion(a.con, input_region);
+        ArrayList<City> citiesCountry = city.getCitiesByCountry(a.con, input_country);
+        ArrayList<City> citiesDistrict = city.getCitiesByDistrict(a.con, input_district);
 
+        // Extract top ten cities
         ArrayList<City> top_ten_cities = city.getTopTenCities(a.con);
-        ArrayList<City> top_ten_cities_continent = city.getTopTenCitiesByContinent(a.con, city_continent);
-        ArrayList<City> top_ten_cities_region = city.getTopTenCitiesByRegion(a.con, city_region);
-        ArrayList<City> top_ten_cities_country = city.getTopTenCitiesByCountry(a.con, city_country);
-        ArrayList<City> top_ten_cities_district = city.getTopTenCitiesByDistrict(a.con, city_district);
+        ArrayList<City> top_ten_cities_continent = city.getTopTenCitiesByContinent(a.con, input_continent);
+        ArrayList<City> top_ten_cities_region = city.getTopTenCitiesByRegion(a.con, input_region);
+        ArrayList<City> top_ten_cities_country = city.getTopTenCitiesByCountry(a.con, input_country);
+        ArrayList<City> top_ten_cities_district = city.getTopTenCitiesByDistrict(a.con, input_district);
+
+        // Extract capital cities
+        ArrayList<CapCity> capcities = capcity.getCapCities(a.con);
+        ArrayList<CapCity> capcitiesContinent = capcity.getCapCitiesByContinent(a.con, input_continent);
+        ArrayList<CapCity> capcitiesRegion = capcity.getCapCitiesByRegion(a.con, input_region);
+
+        // Extract top ten capital cities
+        ArrayList<CapCity> top_ten_capcities = capcity.getTopTenCapCities(a.con);
+        ArrayList<CapCity> top_ten_capcities_continent = capcity.getTopTenCapCitiesByContinent(a.con, input_continent);
+        ArrayList<CapCity> top_ten_capcities_region = capcity.getTopTenCapCitiesByRegion(a.con, input_region);
+
 
 
         // Printing data
@@ -119,26 +139,39 @@ public class App {
 
 //        System.out.println("All the cities in the world organised by largest population to smallest.");
 //        cityout.printPopulation(cities);
-        System.out.println("All the cities in a continent organised by largest population to smallest. (" + city_continent + ")");
-        cityout.printPopulation(citiesContinent);
-        System.out.println("All the cities in a region organised by largest population to smallest. (" + city_region + ")");
-        cityout.printPopulation(citiesRegion);
-        System.out.println("All the cities in a country organised by largest population to smallest. (" + city_country + ")");
-        cityout.printPopulation(citiesCountry);
-        System.out.println("All the cities in a district organised by largest population to smallest. (" + city_district + ")");
-        cityout.printPopulation(citiesDistrict);
+//        System.out.println("All the cities in a continent organised by largest population to smallest. (" + input_continent + ")");
+//        cityout.printPopulation(citiesContinent);
+//        System.out.println("All the cities in a region organised by largest population to smallest. (" + input_region + ")");
+//        cityout.printPopulation(citiesRegion);
+//        System.out.println("All the cities in a country organised by largest population to smallest. (" + input_country + ")");
+//        cityout.printPopulation(citiesCountry);
+//        System.out.println("All the cities in a district organised by largest population to smallest. (" + input_district + ")");
+//        cityout.printPopulation(citiesDistrict);
+//
+//        System.out.println("The top 10 populated cities in the world.");
+//        cityout.printPopulation(top_ten_cities);
+//        System.out.println("The top 10 populated cities in a continent. (" + input_continent + ")");
+//        cityout.printPopulation(top_ten_cities_continent);
+//        System.out.println("The top 10 populated cities in a region. (" + input_region + ")");
+//        cityout.printPopulation(top_ten_cities_region);
+//        System.out.println("The top 10 populated cities in a country. (" + input_country + ")");
+//        cityout.printPopulation(top_ten_cities_country);
+//        System.out.println("The top 10 populated cities in a district. (" + input_district + ")");
+//        cityout.printPopulation(top_ten_cities_district);
 
-        System.out.println("The top 10 populated cities in the world.");
-        cityout.printPopulation(top_ten_cities);
-        System.out.println("The top 10 populated cities in a continent. (" + city_continent + ")");
-        cityout.printPopulation(top_ten_cities_continent);
-        System.out.println("The top 10 populated cities in a region. (" + city_region + ")");
-        cityout.printPopulation(top_ten_cities_region);
-        System.out.println("The top 10 populated cities in a country. (" + city_country + ")");
-        cityout.printPopulation(top_ten_cities_country);
-        System.out.println("The top 10 populated cities in a district. (" + city_district + ")");
-        cityout.printPopulation(top_ten_cities_district);
+        System.out.println("All the capital cities in the world organised by largest population to smallest.");
+        capcityout.printPopulation(capcities);
+        System.out.println("All the capital cities in a continent organised by largest population to smallest. (" + input_continent + ")");
+        capcityout.printPopulation(capcitiesContinent);
+        System.out.println("All the capital cities in a region organised by largest population to smallest. (" + input_region + ")");
+        capcityout.printPopulation(capcitiesRegion);
 
+        System.out.println("The top 10 populated capital cities in the world.");
+        capcityout.printPopulation(top_ten_capcities);
+        System.out.println("The top 10 populated capital cities in a continent. (" + input_continent + ")");
+        capcityout.printPopulation(top_ten_capcities_continent);
+        System.out.println("The top 10 populated capital cities in a region. (" + input_region + ")");
+        capcityout.printPopulation(top_ten_capcities_region);
 
 
         // Disconnect from database

@@ -15,7 +15,7 @@ public class CityOutput {
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
         // Print header
-        // Put Continent below for display
+        // Put Continent (30) or Region (30) below for display
         System.out.println(String.format("| %-50s | %-50s | %-30s  | %-35s |", "Name", "Country", "District", "Population"));
         // Print header-bottom border
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
