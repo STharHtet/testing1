@@ -1,6 +1,7 @@
 package com.napier.sem;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class CityMethod {
             ResultSet rset = stmt.executeQuery(strSelect);
 
             // Extract city information
-            ArrayList<City> cities = new ArrayList<>();
+            ArrayList<City> cities = new ArrayList<City>();
             while (rset.next()) {
                 City cit = new City();
                 cit.setCity_name(rset.getString("city.Name"));
@@ -43,8 +44,7 @@ public class CityMethod {
 
     public ArrayList<City> getCitiesByContinent(Connection con, String cityContinent) {
         try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
+
 
             // Create string for SQL statement
             String strSelect =
@@ -53,11 +53,15 @@ public class CityMethod {
                             + "WHERE city.CountryCode = country.Code AND country.Continent = ? "
                             + "ORDER BY city.Population DESC ";
 
+            // Create an SQL statement
+            PreparedStatement stmt = con.prepareStatement(strSelect);
+            stmt.setString(1,cityContinent);
+
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+            ResultSet rset = stmt.executeQuery();
 
             // Extract city information
-            ArrayList<City> cities = new ArrayList<>();
+            ArrayList<City> cities = new ArrayList<City>();
             while (rset.next()) {
                 City cit = new City();
                 cit.setCity_name(rset.getString("city.Name"));

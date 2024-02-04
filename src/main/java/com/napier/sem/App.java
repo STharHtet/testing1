@@ -86,27 +86,28 @@ public class App {
         ArrayList<Country> tenRegions = cw.getTenCountriesByRegion(a.con,"Caribbean");
 
         ArrayList<City> cities = city.getCity(a.con);
-//        ArrayList<City> citiesContinent = city.getCitiesByContinent(a.con, "Asia");
+        String continent = "Asia";
+        ArrayList<City> citiesContinent = city.getCitiesByContinent(a.con, continent);
 
         // Printing data
-        System.out.println("All the countries in the world organised by largest population to smallest.");
-        coutput.printPopulation(countries);
-        System.out.println("All the countries in a continent organised by largest population to smallest. (Asia)");
-        coutput.printPopulation(continents);
-        System.out.println("All the countries in a region organised by largest population to smallest. (Caribbean)");
-        coutput.printPopulation(region);
-
-        System.out.println("The top 10 populated countries in the world.");
-        coutput.printPopulation(tenCountries);
-        System.out.println("The top 10 populated countries in a continent. (Asia)");
-        coutput.printPopulation(tenContinents);
-        System.out.println("The top 10 populated countries in a region. (Caribbean)");
-        coutput.printPopulation(tenRegions);
+//        System.out.println("All the countries in the world organised by largest population to smallest.");
+//        coutput.printPopulation(countries);
+//        System.out.println("All the countries in a continent organised by largest population to smallest. (Asia)");
+//        coutput.printPopulation(continents);
+//        System.out.println("All the countries in a region organised by largest population to smallest. (Caribbean)");
+//        coutput.printPopulation(region);
+//
+//        System.out.println("The top 10 populated countries in the world.");
+//        coutput.printPopulation(tenCountries);
+//        System.out.println("The top 10 populated countries in a continent. (Asia)");
+//        coutput.printPopulation(tenContinents);
+//        System.out.println("The top 10 populated countries in a region. (Caribbean)");
+//        coutput.printPopulation(tenRegions);
 
         System.out.println("All the cities in the world organised by largest population to smallest.");
         cityout.printPopulation(cities);
-//        System.out.println("All the cities in a continent organised by largest population to smallest.");
-//        cityout.printPopulation(citiesContinent);
+        System.out.println("All the cities in a continent organised by largest population to smallest. (" + continent + ")");
+        cityout.printPopulation(citiesContinent);
 
         // Disconnect from database
         a.disconnect();
