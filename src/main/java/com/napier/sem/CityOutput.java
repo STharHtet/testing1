@@ -15,7 +15,8 @@ public class CityOutput {
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
         // Print header
-        System.out.println(String.format("| %-50s | %-50s | %-50s | %-30s  | %-35s |", "Name", "Country", "Continent", "District", "Population"));
+        // Put Continent below for display
+        System.out.println(String.format("| %-50s | %-50s | %-30s  | %-35s |", "Name", "Country", "District", "Population"));
         // Print header-bottom border
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
@@ -29,9 +30,11 @@ public class CityOutput {
             // Add country code in parentheses after the country name
             String countryString = String.format("%s (%s)", city.getCountry_name(), city.getCountry_code());
 
+            // Put city.getCity_continent() to display Continent data
+            // Put city.getCity_region() to display Region data
             String count_string =
-                    String.format("| %-50s | %-50s | %-50s | %-30s  | %-35s |",
-                            city.getCity_name(), countryString, city.getCity_continent(), city.getCity_district(), formattedPopulation);
+                    String.format("| %-50s | %-50s | %-30s  | %-35s |",
+                            city.getCity_name(), countryString, city.getCity_district(), formattedPopulation);
             System.out.println(count_string);
         }
         // Print bottom border

@@ -14,6 +14,16 @@ public class City {
 
     private String city_continent;
 
+    private String city_region;
+
+    public String getCity_region() {
+        return city_region;
+    }
+
+    public void setCity_region(String city_region) {
+        this.city_region = city_region;
+    }
+
     public String getCity_continent() {
         return city_continent;
     }
