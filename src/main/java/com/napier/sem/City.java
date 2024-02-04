@@ -8,7 +8,19 @@ public class City {
 
     private String city_district;
 
+    private int city_population;
+
     private String country_name;
+
+    private String city_continent;
+
+    public String getCity_continent() {
+        return city_continent;
+    }
+
+    public void setCity_continent(String continent) {
+        this.city_continent = continent;
+    }
 
     public String getCountry_name() {
         return country_name;
@@ -50,5 +62,5 @@ public class City {
         this.city_population = city_population;
     }
 
-    private int city_population;
+
 }

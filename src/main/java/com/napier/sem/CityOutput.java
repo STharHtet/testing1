@@ -15,7 +15,7 @@ public class CityOutput {
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
         // Print header
-        System.out.println(String.format("| %-50s | %-50s | %-30s | %-35s |", "Name", "Country", "District", "Population"));
+        System.out.println(String.format("| %-50s | %-50s | %-50s | %-30s  | %-35s |", "Name", "Country", "Continent", "District", "Population"));
         // Print header-bottom border
         System.out.println("+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+---------------------+--");
 
@@ -30,8 +30,8 @@ public class CityOutput {
             String countryString = String.format("%s (%s)", city.getCountry_name(), city.getCountry_code());
 
             String count_string =
-                    String.format("| %-50s | %-50s | %-30s | %-35s |",
-                            city.getCity_name(), countryString, city.getCity_district(), formattedPopulation);
+                    String.format("| %-50s | %-50s | %-50s | %-30s  | %-35s |",
+                            city.getCity_name(), countryString, city.getCity_continent(), city.getCity_district(), formattedPopulation);
             System.out.println(count_string);
         }
         // Print bottom border

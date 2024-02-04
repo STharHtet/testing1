@@ -86,6 +86,7 @@ public class App {
         ArrayList<Country> tenRegions = cw.getTenCountriesByRegion(a.con,"Caribbean");
 
         ArrayList<City> cities = city.getCity(a.con);
+//        ArrayList<City> citiesContinent = city.getCitiesByContinent(a.con, "Asia");
 
         // Printing data
         System.out.println("All the countries in the world organised by largest population to smallest.");
@@ -104,6 +105,8 @@ public class App {
 
         System.out.println("All the cities in the world organised by largest population to smallest.");
         cityout.printPopulation(cities);
+//        System.out.println("All the cities in a continent organised by largest population to smallest.");
+//        cityout.printPopulation(citiesContinent);
 
         // Disconnect from database
         a.disconnect();
