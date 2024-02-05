@@ -117,7 +117,7 @@ public class CapCityMethod {
         }
     }
 
-    public ArrayList<CapCity> getTopTenCapCities(Connection con)
+    public ArrayList<CapCity> getTopTenCapCities(Connection con, int limit)
     {
         try
         {
@@ -128,7 +128,7 @@ public class CapCityMethod {
                     "SELECT city.Name, country.Name, city.Population "
                             + "FROM country, city "
                             + "WHERE country.Capital = city.ID "
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country and city(Name) information
@@ -151,7 +151,7 @@ public class CapCityMethod {
         }
     }
 
-    public ArrayList<CapCity> getTopTenCapCitiesByContinent(Connection con, String capCityContinent, int lim)
+    public ArrayList<CapCity> getTopTenCapCitiesByContinent(Connection con, String capCityContinent, int limit)
     {
         try
         {
@@ -160,7 +160,7 @@ public class CapCityMethod {
                     "SELECT city.Name, country.Name, city.Population, country.Continent "
                             + "FROM country, city "
                             + "WHERE country.Capital = city.ID AND country.Continent = ?"
-                            + "ORDER BY city.Population DESC LIMIT " + lim;
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
             stmt.setString(1,capCityContinent);
@@ -189,7 +189,7 @@ public class CapCityMethod {
         }
     }
 
-    public ArrayList<CapCity> getTopTenCapCitiesByRegion(Connection con, String capCityRegion)
+    public ArrayList<CapCity> getTopTenCapCitiesByRegion(Connection con, String capCityRegion, int limit)
     {
         try
         {
@@ -198,7 +198,7 @@ public class CapCityMethod {
                     "SELECT city.Name, country.Name, city.Population, country.Region "
                             + "FROM country, city "
                             + "WHERE country.Capital = city.ID AND country.Region = ?"
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
             stmt.setString(1,capCityRegion);

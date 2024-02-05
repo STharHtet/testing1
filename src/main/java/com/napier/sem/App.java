@@ -80,10 +80,11 @@ public class App {
         CapCityOutput capcityout = new CapCityOutput();
 
         // Input for Continent, Region, Country and District
-        String input_continent = "asia";
+        String input_continent = "Asia";
         String input_region = "Caribbean";
         String input_country = "Myanmar";
         String input_district = "Tokyo-to";
+        int limit = 5;  //to show top N
 
         // Array Countries, Region, Continents with the population largest to smallest
         // Extract country in the world from a class
@@ -116,9 +117,9 @@ public class App {
         ArrayList<CapCity> capcitiesRegion = capcity.getCapCitiesByRegion(a.con, input_region);
 
         // Extract top ten capital cities
-        ArrayList<CapCity> top_ten_capcities = capcity.getTopTenCapCities(a.con);
-        ArrayList<CapCity> top_ten_capcities_continent = capcity.getTopTenCapCitiesByContinent(a.con, input_continent, 10);
-        ArrayList<CapCity> top_ten_capcities_region = capcity.getTopTenCapCitiesByRegion(a.con, input_region);
+        ArrayList<CapCity> top_ten_capcities = capcity.getTopTenCapCities(a.con, limit);
+        ArrayList<CapCity> top_ten_capcities_continent = capcity.getTopTenCapCitiesByContinent(a.con, input_continent, limit);
+        ArrayList<CapCity> top_ten_capcities_region = capcity.getTopTenCapCitiesByRegion(a.con, input_region, limit);
 
 
 
@@ -166,11 +167,11 @@ public class App {
         System.out.println("All the capital cities in a region organised by largest population to smallest. (" + input_region + ")");
         capcityout.printPopulation(capcitiesRegion);
 
-        System.out.println("The top 10 populated capital cities in the world.");
+        System.out.println("The top " + limit + " populated capital cities in the world.");
         capcityout.printPopulation(top_ten_capcities);
-        System.out.println("The top 10 populated capital cities in a continent. (" + input_continent + ")");
+        System.out.println("The top " + limit + " populated capital cities in a continent. (" + input_continent + ")");
         capcityout.printPopulation(top_ten_capcities_continent);
-        System.out.println("The top 10 populated capital cities in a region. (" + input_region + ")");
+        System.out.println("The top " + limit + " populated capital cities in a region. (" + input_region + ")");
         capcityout.printPopulation(top_ten_capcities_region);
 
         
