@@ -151,7 +151,7 @@ public class CapCityMethod {
         }
     }
 
-    public ArrayList<CapCity> getTopTenCapCitiesByContinent(Connection con, String capCityContinent)
+    public ArrayList<CapCity> getTopTenCapCitiesByContinent(Connection con, String capCityContinent, int lim)
     {
         try
         {
@@ -160,7 +160,7 @@ public class CapCityMethod {
                     "SELECT city.Name, country.Name, city.Population, country.Continent "
                             + "FROM country, city "
                             + "WHERE country.Capital = city.ID AND country.Continent = ?"
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + lim;
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
             stmt.setString(1,capCityContinent);
