@@ -1,3 +1,5 @@
+package com.napier.sem;
+
 import com.napier.sem.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Assertions;
