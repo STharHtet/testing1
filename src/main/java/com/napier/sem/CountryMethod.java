@@ -141,7 +141,7 @@ public class CountryMethod {
      * @param con
      * @return
      */
-    public ArrayList<Country> getTenCountry(Connection con)
+    public ArrayList<Country> getTenCountry(Connection con, int limit)
     {
         try
         {
@@ -152,7 +152,7 @@ public class CountryMethod {
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
                             + "FROM country, city "
                             + "WHERE country.Capital = city.ID "
-                            + "ORDER BY country.Population DESC LIMIT 10 ";
+                            + "ORDER BY country.Population DESC LIMIT " + limit;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Extract country and city(Name) information
@@ -181,7 +181,7 @@ public class CountryMethod {
     /**
      * The following method is for Continent population
      */
-    public ArrayList<Country> getTenCountriesByContinent(Connection con, String inContinent)
+    public ArrayList<Country> getTenCountriesByContinent(Connection con, String inContinent, int limit)
     {
         try
         {
@@ -190,7 +190,7 @@ public class CountryMethod {
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
                             + "FROM country, city "
                             + "WHERE country.Capital = city.ID AND country.Continent = ?"
-                            + "ORDER BY country.Population DESC LIMIT 10 ";
+                            + "ORDER BY country.Population DESC LIMIT " + limit;
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
             stmt.setString(1,inContinent);
@@ -212,6 +212,7 @@ public class CountryMethod {
             }
             return countries;
         }
+
         catch (Exception e)
         {
             System.out.println(e.getMessage());
@@ -220,7 +221,7 @@ public class CountryMethod {
         }
     }
 
-    public ArrayList<Country> getTenCountriesByRegion(Connection con, String regionn)
+    public ArrayList<Country> getTenCountriesByRegion(Connection con, String regionn, int limit)
     {
         try
         {
@@ -229,7 +230,7 @@ public class CountryMethod {
                     "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
                             + "FROM country, city "
                             + "WHERE country.Capital = city.ID AND country.Region = ? "
-                            + "ORDER BY Region ASC ,Population DESC LIMIT 10 ";
+                            + "ORDER BY Region ASC ,Population DESC LIMIT " + limit;
 
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
@@ -258,6 +259,7 @@ public class CountryMethod {
             return null;
         }
     }
+
 
 
 

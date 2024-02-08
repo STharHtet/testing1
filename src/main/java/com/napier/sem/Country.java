@@ -52,13 +52,13 @@ public class Country {
         this.population = population;
     }
 
-    public int getCapital() {
-        return capital;
-    }
-
-    public void setCapital(int capital) {
-        this.capital = capital;
-    }
+//    public int getCapital() {
+//        return capital;
+//    }
+//
+//    public void setCapital(int capital) {
+//        this.capital = capital;
+//    }
 
     /**
      * Country Code

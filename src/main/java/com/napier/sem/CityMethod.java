@@ -192,7 +192,7 @@ public class CityMethod {
         }
     }
 
-    public ArrayList<City> getTopTenCities(Connection con) {
+    public ArrayList<City> getTopTenCities(Connection con, int limit) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -202,7 +202,7 @@ public class CityMethod {
                     "SELECT city.Name, city.CountryCode, country.Continent, city.District, city.Population, country.Name "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.Code "
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -227,7 +227,7 @@ public class CityMethod {
         }
     }
 
-    public ArrayList<City> getTopTenCitiesByContinent(Connection con, String cityContinent) {
+    public ArrayList<City> getTopTenCitiesByContinent(Connection con, String cityContinent, int limit) {
         try {
 
 
@@ -236,7 +236,7 @@ public class CityMethod {
                     "SELECT city.Name, city.CountryCode, country.Continent, city.District, city.Population, country.Name "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.Code AND country.Continent = ? "
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
 
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
@@ -265,7 +265,7 @@ public class CityMethod {
         }
     }
 
-    public ArrayList<City> getTopTenCitiesByRegion(Connection con, String cityRegion) {
+    public ArrayList<City> getTopTenCitiesByRegion(Connection con, String cityRegion, int limit) {
         try {
 
 
@@ -274,7 +274,7 @@ public class CityMethod {
                     "SELECT city.Name, city.CountryCode, country.Region, city.District, city.Population, country.Name "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.Code AND country.Region = ? "
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
 
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
@@ -303,7 +303,7 @@ public class CityMethod {
         }
     }
 
-    public ArrayList<City> getTopTenCitiesByCountry(Connection con, String cityCountry) {
+    public ArrayList<City> getTopTenCitiesByCountry(Connection con, String cityCountry, int limit) {
         try {
 
 
@@ -312,7 +312,7 @@ public class CityMethod {
                     "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Name "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.Code AND country.Name = ? "
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
 
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);
@@ -340,7 +340,7 @@ public class CityMethod {
         }
     }
 
-    public ArrayList<City> getTopTenCitiesByDistrict(Connection con, String cityDistrict) {
+    public ArrayList<City> getTopTenCitiesByDistrict(Connection con, String cityDistrict, int limit) {
         try {
 
 
@@ -349,7 +349,7 @@ public class CityMethod {
                     "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Name "
                             + "FROM city, country "
                             + "WHERE city.CountryCode = country.Code AND city.District = ? "
-                            + "ORDER BY city.Population DESC LIMIT 10 ";
+                            + "ORDER BY city.Population DESC LIMIT " + limit;
 
             // Create an SQL statement
             PreparedStatement stmt = con.prepareStatement(strSelect);

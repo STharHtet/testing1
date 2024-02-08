@@ -20,13 +20,13 @@ public class CapCity {
         this.cap_city_continent = cap_city_continent;
     }
 
-    public String getCap_city_region() {
-        return cap_city_region;
-    }
-
-    public void setCap_city_region(String cap_city_region) {
-        this.cap_city_region = cap_city_region;
-    }
+//    public String getCap_city_region() {
+//        return cap_city_region;
+//    }
+//
+//    public void setCap_city_region(String cap_city_region) {
+//        this.cap_city_region = cap_city_region;
+//    }
 
     public String getCap_city_name() {
         return cap_city_name;
