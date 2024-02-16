@@ -85,6 +85,7 @@ public class App {
         String input_country = "Myanmar";
         String input_district = "Tokyo-to";
         int limit = 5;  //to show top N
+        // merge collision 1 testing here
 
         // Array Countries, Region, Continents with the population largest to smallest
         // Extract country in the world from a class
